@@ -18,6 +18,17 @@
 				<button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium">Post</button>
 			</div>
 		</form>
+
+		@if ($posts->count())
+		@foreach ($posts as $post)
+		{{ $post->user->username }}
+		{{ $post->created_at->diffForHumans() }}
+		{{ $post->body }}
+		@endforeach
+		{{ $posts->links() }}
+		@else
+		<p>There are no posts</p>
+		@endif
 	</div>
 </div>
 @endsection
